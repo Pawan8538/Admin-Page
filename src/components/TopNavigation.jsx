@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { 
   LayoutDashboard, Users, TestTube, UserCircle, 
-  Microscope, HeartHandshake, IndianRupee, ChevronDown, Activity
+  Microscope, HeartHandshake, IndianRupee, ChevronDown, Activity, Settings
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -122,6 +122,19 @@ export default function TopNavigation() {
         { label: 'Due Bill Report', to: '/billing/reports/due' },
         { label: 'Paid Bill Report', to: '/billing/reports/paid' },
         { label: 'Due Collect Report', to: '/billing/reports/collect' },
+      ]
+    },
+    {
+      label: 'Settings', icon: Settings,
+      dropdown: [
+        { label: 'WhatsApp API', to: '/settings/whatsapp' },
+        { label: 'SMTP Email Config', to: '/settings/smtp' },
+        { label: 'Invoice & Report Formatting', to: '/settings/formatting' },
+        { label: 'Tax & Default Discount Rules', to: '/settings/taxes' },
+        { label: 'ID Generation & Prefixes', to: '/settings/prefixes' },
+        { label: 'System Audit Logs', to: '/settings/audit' },
+        { label: 'Database Backup & Restore', to: '/settings/backup' },
+        { label: 'Software Updates & Licensing', to: '/settings/updates' }
       ]
     }
   ];

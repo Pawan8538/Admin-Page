@@ -36,6 +36,10 @@ import Statement from './pages/referral/Statement';
 import CommissionReport from './pages/referral/CommissionReport';
 import ReferralSummary from './pages/referral/ReferralSummary';
 import PayoutReport from './pages/referral/PayoutReport';
+
+// Settings
+import WhatsAppConfig from './pages/settings/WhatsAppConfig';
+import SMTPConfig from './pages/settings/SMTPConfig';
 // Placeholder mapping component
 const Placeholder = ({ title }) => (
   <div className="flex justify-center p-10 bg-white">
@@ -97,6 +101,18 @@ function App() {
             <Route path="reports/due" element={<DueReport />} />
             <Route path="reports/paid" element={<PaidReport />} />
             <Route path="reports/collect" element={<DueCollectReport />} />
+          </Route>
+
+          {/* Settings */}
+          <Route path="settings">
+            <Route path="whatsapp" element={<WhatsAppConfig />} />
+            <Route path="smtp" element={<SMTPConfig />} />
+            <Route path="formatting" element={<Placeholder title="Invoice & Report Formatting" />} />
+            <Route path="taxes" element={<Placeholder title="Tax & Default Discount Rules" />} />
+            <Route path="prefixes" element={<Placeholder title="ID Generation & Prefixes" />} />
+            <Route path="audit" element={<Placeholder title="System Audit Logs" />} />
+            <Route path="backup" element={<Placeholder title="Database Backup & Restore" />} />
+            <Route path="updates" element={<Placeholder title="Software Updates & Licensing" />} />
           </Route>
 
         </Route>

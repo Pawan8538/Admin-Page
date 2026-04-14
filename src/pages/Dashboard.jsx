@@ -1,7 +1,10 @@
-import { Search, FileText, Settings, Activity, Clock, Users, IndianRupee } from 'lucide-react';
+import { Search, FileText, Activity, Clock, Users, IndianRupee } from 'lucide-react';
+import { useState } from 'react';
 import clsx from 'clsx';
+import InvestigationModal from '../components/InvestigationModal';
 
 export default function Dashboard() {
+  const [showInvestigationModal, setShowInvestigationModal] = useState(false);
   const recentAppts = [
     { id: 'APT-992', time: '10:30 AM', name: 'John Doe', doctor: 'Dr. Sarah Connor', status: 'Waiting' },
     { id: 'APT-993', time: '10:45 AM', name: 'Jane Smith', doctor: 'Dr. John Watson', status: 'In Consult' },
@@ -31,11 +34,11 @@ export default function Dashboard() {
              <Search className="h-3 w-3 text-slate-400 absolute left-2 top-1.5" />
              <input type="text" placeholder="Patient ID, Name..." className="w-full pl-6 pr-1 py-0.5 text-xs focus:ring-0 border-none outline-none" />
           </div>
-          <button className="bg-primary-600 px-2 py-1 border border-primary-800 text-xs text-white hover:bg-primary-700 flex items-center gap-1">
+          <button 
+            onClick={() => setShowInvestigationModal(true)}
+            className="bg-primary-600 px-2 py-1 border border-primary-800 text-xs text-white hover:bg-primary-700 flex items-center gap-1"
+          >
              <FileText className="w-3 h-3" /> Investigation Report
-          </button>
-          <button className="bg-slate-300 px-2 py-1 border border-slate-500 text-xs text-slate-800 hover:bg-slate-400 flex items-center gap-1">
-             <Settings className="w-3 h-3" /> Settings
           </button>
         </div>
       </div>
@@ -117,8 +120,12 @@ export default function Dashboard() {
           <div className="p-1 border-b-2 border-slate-400 bg-slate-200 flex justify-between items-center">
             <h2 className="text-sm font-bold text-slate-800">Pending Lab Requests</h2>
             <div className="flex gap-1">
-              <button className="px-2 py-0.5 text-xs border border-slate-500 bg-white hover:bg-slate-50">Pathology Reports</button>
-              <button className="px-2 py-0.5 text-xs border border-primary-800 bg-primary-600 text-white hover:bg-primary-700">Process Batch</button>
+              <button 
+                onClick={() => setShowInvestigationModal(true)}
+                className="px-2 py-0.5 text-xs border border-primary-800 bg-primary-600 text-white hover:bg-primary-700 shadow-sm"
+              >
+                Investigation Report
+              </button>
             </div>
           </div>
           <table className="min-w-full divide-y divide-slate-300 border-b border-slate-400">
@@ -159,6 +166,10 @@ export default function Dashboard() {
           ElabAssist v4.2.0 | Build 8912
         </div>
       </div>
+
+      {showInvestigationModal && (
+        <InvestigationModal onClose={() => setShowInvestigationModal(false)} />
+      )}
 
     </div>
   );
