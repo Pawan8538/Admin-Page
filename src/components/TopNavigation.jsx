@@ -80,8 +80,7 @@ export default function TopNavigation() {
     {
       label: 'Tests', icon: TestTube,
       dropdown: [
-        { label: 'Create New Test', to: '/tests/create' },
-        { label: 'Test Master Config', to: '/tests/config' },
+        { label: 'Create Test', to: '/tests/create' },
         { label: 'Master Tests List', to: '/tests/list' },
         { label: 'Add Tests', to: '/tests/add' },
       ]
@@ -101,7 +100,6 @@ export default function TopNavigation() {
         { label: 'Lab Tests Config', to: '/pathology/tests' },
         { label: 'Categories', to: '/pathology/categories' },
         { label: 'Reports', to: '/pathology/reports' },
-        { label: 'Queue / Worklist', to: '/pathology/queue' },
       ]
     },
     {
