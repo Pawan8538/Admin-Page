@@ -1,4 +1,4 @@
-import { Search, FileText, Settings, Activity, Clock, Users, DollarSign } from 'lucide-react';
+import { Search, FileText, Settings, Activity, Clock, Users, IndianRupee } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Dashboard() {
@@ -21,7 +21,9 @@ export default function Dashboard() {
       <div className="flex justify-between items-center border-b-2 border-slate-400 pb-1 mb-2 bg-slate-200 p-2 border-2 rounded-none">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-bold text-slate-800 tracking-wide uppercase">System Dashboard</h1>
-          <span className="text-xs font-semibold text-slate-600 bg-white border border-slate-400 px-2 py-0.5">14-APR-2026</span>
+          <span className="text-xs font-semibold text-slate-600 bg-white border border-slate-400 px-2 py-0.5">
+            {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/ /g, '-').toUpperCase()}
+          </span>
         </div>
         
         <div className="flex items-center gap-2">
@@ -62,7 +64,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="bg-white border-2 border-slate-400 p-2 flex items-center gap-3">
-          <div className="bg-green-100 border border-green-400 p-2"><DollarSign className="w-5 h-5 text-green-700"/></div>
+          <div className="bg-green-100 border border-green-400 p-2"><IndianRupee className="w-5 h-5 text-green-700"/></div>
           <div>
             <div className="text-xs font-bold text-slate-600 uppercase">Daily Collection (Est)</div>
             <div className="text-lg font-bold text-slate-900 leading-tight">₹4,250 <span className="text-xs text-slate-500 font-semibold">(To Collect: ₹480)</span></div>

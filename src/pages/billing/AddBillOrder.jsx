@@ -1,6 +1,6 @@
 export default function AddBillOrder() {
   return (
-    <div className="max-w-4xl space-y-2 pb-10">
+    <div className="max-w-4xl mx-auto space-y-2 pb-10">
       <div className="mb-2 flex items-center justify-between border-b-2 border-slate-400 pb-1">
         <h1 className="text-lg font-bold text-slate-800 uppercase tracking-wide">Test Order / Add Bill</h1>
       </div>

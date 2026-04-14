@@ -128,7 +128,7 @@ export default function TopNavigation() {
 
   return (
     <div className="bg-slate-900 border-b-2 border-slate-700 sticky top-0 z-40 rounded-none">
-      <div className="max-w-full px-2">
+      <div className="max-w-full px-16 lg:px-28">
         <div className="flex items-center justify-between h-10">
           <div className="flex items-center flex-shrink-0">
             <Activity className="h-5 w-5 text-primary-500" />
