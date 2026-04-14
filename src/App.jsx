@@ -10,6 +10,7 @@ import PatientCategory from './pages/patient/PatientCategory';
 // Tests
 import TestList from './pages/tests/TestList';
 import CreateTest from './pages/tests/CreateTest';
+import AddTests from './pages/tests/AddTests';
 
 // Additional Modules
 import EmployeeList from './pages/employee/EmployeeList';
@@ -60,7 +61,7 @@ function App() {
           <Route path="tests">
             <Route path="create" element={<CreateTest />} />
             <Route path="list" element={<TestList />} />
-            <Route path="add" element={<Placeholder title="Add Tests to Patient" />} />
+            <Route path="add" element={<AddTests />} />
           </Route>
 
           {/* Employee */}

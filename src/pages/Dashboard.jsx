@@ -32,7 +32,7 @@ export default function Dashboard() {
              <input type="text" placeholder="Patient ID, Name..." className="w-full pl-6 pr-1 py-0.5 text-xs focus:ring-0 border-none outline-none" />
           </div>
           <button className="bg-primary-600 px-2 py-1 border border-primary-800 text-xs text-white hover:bg-primary-700 flex items-center gap-1">
-             <FileText className="w-3 h-3" /> Investment Report
+             <FileText className="w-3 h-3" /> Investigation Report
           </button>
           <button className="bg-slate-300 px-2 py-1 border border-slate-500 text-xs text-slate-800 hover:bg-slate-400 flex items-center gap-1">
              <Settings className="w-3 h-3" /> Settings
