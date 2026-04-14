@@ -1,94 +1,78 @@
 export default function TestMasterConfig() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-800">Test Master Configuration</h1>
-        <p className="text-slate-500 mt-1">Configure global parameters and pricing for a lab test.</p>
+    <div className="max-w-full">
+      <div className="mb-2 flex items-center justify-between border-b-2 border-slate-400 pb-1">
+        <h1 className="text-lg font-bold text-slate-800 uppercase tracking-wide">Test Master Configuration</h1>
       </div>
 
-      <form className="bg-white shadow-sm border border-slate-200 rounded-lg p-6 space-y-8">
+      <form className="bg-slate-100 border border-slate-400 p-3 space-y-4">
         
         {/* Basic Config */}
-        <div>
-          <h3 className="text-lg leading-6 font-medium text-slate-900 mb-4 pb-2 border-b border-slate-100">Test Information</h3>
-          <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-4">
-              <label htmlFor="testName" className="block text-sm font-medium text-slate-700">Test Name</label>
-              <div className="mt-1">
-                <input type="text" id="testName" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" placeholder="Complete Blood Count" />
-              </div>
+        <div className="border border-slate-300 p-2 bg-white">
+          <h3 className="text-sm font-bold text-slate-800 mb-2 bg-slate-200 px-2 py-1 border border-slate-300">Test Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            
+            <div className="flex items-center col-span-1 md:col-span-2">
+              <label htmlFor="testName" className="w-40 text-xs font-semibold text-slate-700">Test Name:</label>
+              <input type="text" id="testName" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
 
-            <div className="sm:col-span-2">
-              <label htmlFor="testCode" className="block text-sm font-medium text-slate-700">Test Code / Short Name</label>
-              <div className="mt-1">
-                <input type="text" id="testCode" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" placeholder="CBC" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="testCode" className="w-40 text-xs font-semibold text-slate-700">Short Name/Code:</label>
+              <input type="text" id="testCode" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
 
-            <div className="sm:col-span-3">
-               <label htmlFor="category" className="block text-sm font-medium text-slate-700">Category (Department)</label>
-               <select id="category" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-slate-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
+            <div className="flex items-center">
+               <label htmlFor="category" className="w-40 text-xs font-semibold text-slate-700">Category:</label>
+               <select id="category" className="flex-1 text-xs border-slate-400 py-1 px-2 border focus:ring-0 focus:border-primary-500 rounded-none">
                  <option>Hematology</option>
                  <option>Biochemistry</option>
                  <option>Clinical Pathology</option>
-                 <option>Microbiology</option>
                </select>
             </div>
 
-            <div className="sm:col-span-3">
-               <label htmlFor="sample" className="block text-sm font-medium text-slate-700">Sample Type</label>
-               <select id="sample" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-slate-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
+            <div className="flex items-center">
+               <label htmlFor="sample" className="w-40 text-xs font-semibold text-slate-700">Sample Type:</label>
+               <select id="sample" className="flex-1 text-xs border-slate-400 py-1 px-2 border focus:ring-0 focus:border-primary-500 rounded-none">
                  <option>Whole Blood</option>
                  <option>Serum</option>
                  <option>Urine</option>
-                 <option>Plasma</option>
                </select>
             </div>
 
-            <div className="sm:col-span-3">
-              <label htmlFor="method" className="block text-sm font-medium text-slate-700">Method</label>
-              <div className="mt-1">
-                <input type="text" id="method" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
+            <div className="flex items-center">
+              <label htmlFor="method" className="w-40 text-xs font-semibold text-slate-700">Method:</label>
+              <input type="text" id="method" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
+            </div>
+
+            <div className="flex items-center">
+              <label htmlFor="unit" className="w-40 text-xs font-semibold text-slate-700">Default Unit:</label>
+              <input type="text" id="unit" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
+            </div>
+
+            <div className="flex items-center">
+              <label htmlFor="price" className="w-40 text-xs font-semibold text-slate-700">Test Price (Base):</label>
+              <div className="flex flex-1 items-center border border-slate-400 bg-white">
+                <span className="px-2 text-xs text-slate-500 border-r border-slate-400">₹</span>
+                <input type="text" id="price" className="w-full text-xs p-1 outline-none border-none focus:ring-0 rounded-none" placeholder="0.00" />
               </div>
             </div>
 
-            <div className="sm:col-span-3">
-              <label htmlFor="unit" className="block text-sm font-medium text-slate-700">Default Unit</label>
-              <div className="mt-1">
-                <input type="text" id="unit" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label htmlFor="refRange" className="block text-sm font-medium text-slate-700">Bio Reference Range (Global Text)</label>
-              <div className="mt-1">
-                <input type="text" id="refRange" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label htmlFor="price" className="block text-sm font-medium text-slate-700">Test Price (Base)</label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-slate-500 sm:text-sm">₹</span>
-                </div>
-                <input type="text" id="price" className="focus:ring-primary-500 focus:border-primary-500 block w-full pl-7 sm:text-sm border-slate-300 rounded-md p-2 border" placeholder="0.00" />
-              </div>
+            <div className="flex items-center col-span-1 md:col-span-2">
+              <label htmlFor="refRange" className="w-40 text-xs font-semibold text-slate-700">Bio Ref Range (Text):</label>
+              <input type="text" id="refRange" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
             
           </div>
         </div>
 
-        <div className="pt-5 border-t border-slate-200">
-          <div className="flex justify-end gap-3">
-            <button type="button" className="bg-white py-2 px-4 border border-slate-300 rounded-md shadow-sm text-sm font-medium text-slate-700 hover:bg-slate-50">
-              Clear
-            </button>
-            <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
-              Save Configuration
-            </button>
-          </div>
+        <div className="flex justify-end gap-2 border-t border-slate-400 pt-3 mt-4">
+          <button type="button" className="bg-slate-200 py-1 px-4 border border-slate-500 text-xs font-semibold text-slate-800 hover:bg-slate-300 rounded-none">
+            Clear
+          </button>
+          <button type="submit" className="bg-primary-600 py-1 px-4 border border-primary-800 text-xs font-semibold text-white hover:bg-primary-700 rounded-none">
+            Save Configuration
+          </button>
         </div>
 
       </form>

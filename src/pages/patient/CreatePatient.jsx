@@ -1,115 +1,96 @@
 export default function CreatePatient() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-800">Add New Patient</h1>
-        <p className="text-slate-500 mt-1">Enter patient demographics and clinical details based on ElabAssist standards.</p>
+    <div className="max-w-full">
+      <div className="mb-2 flex items-center justify-between border-b-2 border-slate-400 pb-1">
+        <h1 className="text-lg font-bold text-slate-800 uppercase tracking-wide">Add New Patient</h1>
       </div>
 
-      <form className="bg-white shadow-sm border border-slate-200 rounded-lg p-6 space-y-8">
+      <form className="bg-slate-100 border border-slate-400 p-3 space-y-4">
         
         {/* Basic Info */}
-        <div>
-          <h3 className="text-lg leading-6 font-medium text-slate-900 mb-4 pb-2 border-b border-slate-100">Basic Information</h3>
-          <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700">Full Name</label>
-              <div className="mt-1">
-                <input type="text" name="name" id="name" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" placeholder="John Doe" />
-              </div>
+        <div className="border border-slate-300 p-2 bg-white">
+          <h3 className="text-sm font-bold text-slate-800 mb-2 bg-slate-200 px-2 py-1 border border-slate-300">Basic Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="flex items-center">
+              <label htmlFor="name" className="w-32 text-xs font-semibold text-slate-700">Full Name:</label>
+              <input type="text" name="name" id="name" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" placeholder="John Doe" />
             </div>
 
-            <div className="sm:col-span-1 border border-slate-300 rounded-md p-2 text-center text-sm font-medium text-slate-500 flex flex-col justify-center bg-slate-50 cursor-pointer hover:bg-slate-100">
-               Upload Photo
-            </div>
-
-            <div className="sm:col-span-2">
-               <label htmlFor="gender" className="block text-sm font-medium text-slate-700">Gender</label>
-               <select id="gender" name="gender" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-slate-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
+            <div className="flex items-center">
+               <label htmlFor="gender" className="w-32 text-xs font-semibold text-slate-700">Gender:</label>
+               <select id="gender" name="gender" className="flex-1 text-xs border-slate-400 py-1 px-2 border focus:ring-0 focus:border-primary-500 rounded-none">
                  <option>Male</option>
                  <option>Female</option>
                  <option>Other</option>
                </select>
             </div>
 
-            <div className="sm:col-span-2">
-              <label htmlFor="dob" className="block text-sm font-medium text-slate-700">Birthday</label>
-              <div className="mt-1">
-                <input type="date" name="dob" id="dob" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="dob" className="w-32 text-xs font-semibold text-slate-700">Birthday:</label>
+              <input type="date" name="dob" id="dob" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
 
-            <div className="sm:col-span-1">
-              <label htmlFor="age" className="block text-sm font-medium text-slate-700">Age</label>
-              <div className="mt-1">
-                <input type="number" name="age" id="age" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="age" className="w-32 text-xs font-semibold text-slate-700">Age:</label>
+              <input type="number" name="age" id="age" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
 
-            <div className="sm:col-span-3">
-              <label htmlFor="mobile" className="block text-sm font-medium text-slate-700">Mobile Number</label>
-              <div className="mt-1">
-                <input type="tel" name="mobile" id="mobile" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center col-span-1 md:col-span-2">
+              <label htmlFor="mobile" className="w-32 text-xs font-semibold text-slate-700">Mobile Number:</label>
+              <input type="tel" name="mobile" id="mobile" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
 
-            <div className="sm:col-span-3">
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email</label>
-              <div className="mt-1">
-                <input type="email" name="email" id="email" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center col-span-1 md:col-span-2">
+              <label htmlFor="email" className="w-32 text-xs font-semibold text-slate-700">Email:</label>
+              <input type="email" name="email" id="email" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
+            </div>
+            
+            <div className="flex items-center col-span-1 md:col-span-2">
+              <label className="w-32 text-xs font-semibold text-slate-700">Photo:</label>
+              <button type="button" className="text-xs border border-slate-400 bg-slate-200 px-3 py-1 hover:bg-slate-300 rounded-none">Browse...</button>
+              <span className="ml-2 text-xs text-slate-500">No file selected</span>
             </div>
           </div>
         </div>
 
         {/* Clinical Info */}
-        <div>
-          <h3 className="text-lg leading-6 font-medium text-slate-900 mb-4 pb-2 border-b border-slate-100">Clinical Measurements</h3>
-          <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-2">
-               <label htmlFor="bloodGroup" className="block text-sm font-medium text-slate-700">Blood Group</label>
-               <select id="bloodGroup" name="bloodGroup" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-slate-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
+        <div className="border border-slate-300 p-2 bg-white">
+          <h3 className="text-sm font-bold text-slate-800 mb-2 bg-slate-200 px-2 py-1 border border-slate-300">Clinical Measurements</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="flex items-center">
+               <label htmlFor="bloodGroup" className="w-32 text-xs font-semibold text-slate-700">Blood Group:</label>
+               <select id="bloodGroup" name="bloodGroup" className="flex-1 text-xs border-slate-400 py-1 px-2 border focus:ring-0 focus:border-primary-500 rounded-none">
                  <option>O+</option> <option>O-</option> <option>A+</option> <option>A-</option>
                  <option>B+</option> <option>B-</option> <option>AB+</option> <option>AB-</option>
                </select>
             </div>
-            <div className="sm:col-span-2">
-              <label htmlFor="bp" className="block text-sm font-medium text-slate-700">Blood Pressure</label>
-              <div className="mt-1">
-                <input type="text" name="bp" id="bp" placeholder="e.g. 120/80" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="bp" className="w-32 text-xs font-semibold text-slate-700">Blood Pressure:</label>
+              <input type="text" name="bp" id="bp" placeholder="120/80" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
-            <div className="sm:col-span-1">
-              <label htmlFor="height" className="block text-sm font-medium text-slate-700">Height (cm)</label>
-              <div className="mt-1">
-                <input type="text" name="height" id="height" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="height" className="w-32 text-xs font-semibold text-slate-700">Height (cm):</label>
+              <input type="text" name="height" id="height" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
-            <div className="sm:col-span-1">
-              <label htmlFor="weight" className="block text-sm font-medium text-slate-700">Weight (kg)</label>
-              <div className="mt-1">
-                <input type="text" name="weight" id="weight" className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-center">
+              <label htmlFor="weight" className="w-32 text-xs font-semibold text-slate-700">Weight (kg):</label>
+              <input type="text" name="weight" id="weight" className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
             
-            <div className="sm:col-span-6">
-              <label htmlFor="address" className="block text-sm font-medium text-slate-700">Address</label>
-              <div className="mt-1">
-                <textarea id="address" name="address" rows={2} className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-slate-300 rounded-md p-2 border" />
-              </div>
+            <div className="flex items-start col-span-1 md:col-span-2">
+              <label htmlFor="address" className="w-32 text-xs font-semibold text-slate-700 mt-1">Address:</label>
+              <textarea id="address" name="address" rows={2} className="flex-1 text-xs border-slate-400 p-1 border focus:ring-0 focus:border-primary-500 rounded-none" />
             </div>
           </div>
         </div>
 
-        <div className="pt-5 border-t border-slate-200">
-          <div className="flex justify-end gap-3">
-            <button type="button" className="bg-white py-2 px-4 border border-slate-300 rounded-md shadow-sm text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-              Cancel
-            </button>
-            <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-              Save Patient
-            </button>
-          </div>
+        <div className="flex justify-end gap-2 border-t border-slate-400 pt-3 mt-4">
+          <button type="button" className="bg-slate-200 py-1 px-4 border border-slate-500 text-xs font-semibold text-slate-800 hover:bg-slate-300 rounded-none">
+            Cancel
+          </button>
+          <button type="submit" className="bg-primary-600 py-1 px-4 border border-primary-800 text-xs font-semibold text-white hover:bg-primary-700 rounded-none">
+            Save Patient
+          </button>
         </div>
 
       </form>

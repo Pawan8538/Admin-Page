@@ -1,74 +1,69 @@
-import { Filter, Download } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function TestBillList() {
   const dummyBills = [
-    { sn: 1, bill: 'INV-2023-001', name: 'John Doe', dDate: '2023-11-01', dStatus: 'Delivered', pStatus: 'Paid', net: '₹1200', paid: '₹1200', due: '₹0', date: '2023-10-28' },
-    { sn: 2, bill: 'INV-2023-002', name: 'Jane Smith', dDate: '2023-11-02', dStatus: 'Pending', pStatus: 'Due', net: '₹800', paid: '₹400', due: '₹400', date: '2023-10-29' },
-    { sn: 3, bill: 'INV-2023-003', name: 'Robert King', dDate: '2023-11-01', dStatus: 'Delivered', pStatus: 'Due', net: '₹2500', paid: '₹0', due: '₹2500', date: '2023-10-30' },
+    { sn: 1, bill: 'INV-2023-001', name: 'John Doe', dDate: '23-11-01', dStatus: 'Delivered', pStatus: 'Paid', net: '1200', paid: '1200', due: '0', date: '23-10-28' },
+    { sn: 2, bill: 'INV-2023-002', name: 'Jane Smith', dDate: '23-11-02', dStatus: 'Pending', pStatus: 'Due', net: '800', paid: '400', due: '400', date: '23-10-29' },
+    { sn: 3, bill: 'INV-2023-003', name: 'Robert King', dDate: '23-11-01', dStatus: 'Delivered', pStatus: 'Due', net: '2500', paid: '0', due: '2500', date: '23-10-30' },
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-slate-800">Test Bills / Invoices</h1>
-        <button className="flex items-center gap-2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50">
-          <Download className="w-4 h-4" /> Export Report
+    <div className="space-y-4">
+      <div className="flex justify-between items-center border-b-2 border-slate-400 pb-1">
+        <h1 className="text-lg font-bold text-slate-800 uppercase tracking-wide">Test Bills / Invoices</h1>
+        <button className="flex items-center gap-1 px-2 py-1 bg-slate-200 border border-slate-500 text-xs font-semibold text-slate-800 hover:bg-slate-300 rounded-none">
+          <Download className="w-3 h-3" /> Export Report
         </button>
       </div>
 
-      <div className="bg-white shadow-sm border border-slate-200 rounded-lg overflow-hidden">
-        <div className="p-4 border-b border-slate-200 flex gap-4 bg-slate-50">
-          <div className="relative flex-1 max-w-sm">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Filter className="h-4 w-4 text-slate-400" />
+      <div className="bg-white border-2 border-slate-400 rounded-none">
+        <div className="p-2 border-b-2 border-slate-400 flex gap-2 bg-slate-200">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-slate-700">Filter:</span>
+            <div className="relative w-64 border border-slate-400 bg-white">
+              <Search className="h-3 w-3 text-slate-400 absolute left-2 top-1.5" />
+              <input
+                type="text"
+                className="w-full text-xs py-1 pl-6 pr-2 rounded-none focus:ring-0 focus:outline-none border-none"
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Filter by bill no or patient..."
-              className="pl-10 w-full border-slate-300 rounded-md shadow-sm sm:text-sm focus:ring-primary-500 focus:border-primary-500 border p-2"
-            />
           </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-200">
-            <thead className="bg-slate-50">
+          <table className="min-w-full divide-y divide-slate-300">
+            <thead className="bg-slate-300">
               <tr>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Sl</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Bill No</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Patient Name</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Del. Date</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Del. Status</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Pay Status</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">Net Payable</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">Paid</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase whitespace-nowrap bg-red-50/50">Due</th>
-                <th scope="col" className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">Action</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-center text-xs font-bold text-slate-800 uppercase">Sl</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-left text-xs font-bold text-slate-800 uppercase">Bill No</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-left text-xs font-bold text-slate-800 uppercase">Patient</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-center text-xs font-bold text-slate-800 uppercase">D. Date</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-center text-xs font-bold text-slate-800 uppercase">D. Status</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-center text-xs font-bold text-slate-800 uppercase">Pay Stat</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-right text-xs font-bold text-slate-800 uppercase">Net (₹)</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-right text-xs font-bold text-slate-800 uppercase">Paid (₹)</th>
+                <th scope="col" className="px-2 py-1 border-r border-slate-400 text-right text-xs font-bold text-red-800 uppercase bg-red-200">Due (₹)</th>
+                <th scope="col" className="px-2 py-1 text-center text-xs font-bold text-slate-800 uppercase">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-slate-200">
               {dummyBills.map((bill, idx) => (
-                <tr key={idx} className="hover:bg-slate-50">
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-500">{bill.sn}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-primary-600">{bill.bill}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-slate-900">{bill.name}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-500">{bill.dDate}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-500">{bill.dStatus}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm">
-                    <span className={clsx(
-                      "px-2 inline-flex text-xs leading-5 font-semibold rounded-full border",
-                      bill.pStatus === 'Paid' ? "bg-green-50 text-green-700 border-green-200" : "bg-red-50 text-red-700 border-red-200"
-                    )}>
-                      {bill.pStatus}
-                    </span>
+                <tr key={idx} className="hover:bg-blue-50">
+                  <td className="px-2 py-1 border-r border-slate-300 text-center text-xs text-slate-600">{bill.sn}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-xs font-semibold text-primary-800">{bill.bill}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-xs font-semibold text-slate-900">{bill.name}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-center text-xs text-slate-700">{bill.dDate}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-center text-xs text-slate-700">{bill.dStatus}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-center text-xs font-bold">
+                    <span className={bill.pStatus === 'Paid' ? "text-green-700" : "text-red-700"}>{bill.pStatus}</span>
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-slate-700">{bill.net}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-green-600">{bill.paid}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-bold text-red-600 bg-red-50/20">{bill.due}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
-                    <button className="text-blue-600 hover:text-blue-900 mr-3">View</button>
-                    <button className="text-primary-600 hover:text-primary-900">Print</button>
+                  <td className="px-2 py-1 border-r border-slate-300 text-right text-xs text-slate-900">{bill.net}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-right text-xs text-green-700 font-semibold">{bill.paid}</td>
+                  <td className="px-2 py-1 border-r border-slate-300 text-right text-xs font-bold text-red-700 bg-red-50">{bill.due}</td>
+                  <td className="px-2 py-1 text-center text-xs">
+                    <button className="text-blue-700 hover:underline mr-2">View</button>
+                    <button className="text-slate-700 hover:underline">Print</button>
                   </td>
                 </tr>
               ))}

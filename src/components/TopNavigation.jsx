@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { 
   LayoutDashboard, Users, TestTube, UserCircle, 
-  Microscope, HeartHandshake, Receipt, ChevronDown, Activity
+  Microscope, HeartHandshake, IndianRupee, ChevronDown, Activity
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -26,7 +26,7 @@ const NavItem = ({ to, icon: Icon, label, dropdown }) => {
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className={clsx(
-            "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white",
+            "flex items-center gap-1 px-2 py-1 text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white rounded-none",
             isOpen ? "bg-slate-800 text-white" : "text-slate-300"
           )}
         >
@@ -35,13 +35,13 @@ const NavItem = ({ to, icon: Icon, label, dropdown }) => {
           <ChevronDown className={clsx("w-3 h-3 transition-transform", isOpen && "rotate-180")} />
         </button>
         {isOpen && (
-          <div className="absolute left-0 mt-2 w-48 bg-white border border-slate-200 rounded-md shadow-lg py-1 z-50">
+          <div className="absolute left-0 mt-0 w-48 bg-white border-2 border-slate-400 shadow-sm py-1 z-50 rounded-none">
             {dropdown.map((item, index) => (
               <Link
                 key={index}
                 to={item.to}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-600 transition-colors"
+                className="block px-3 py-1 text-sm text-slate-700 hover:bg-slate-200 hover:text-primary-800 transition-colors"
               >
                 {item.label}
               </Link>
@@ -56,7 +56,7 @@ const NavItem = ({ to, icon: Icon, label, dropdown }) => {
     <NavLink 
       to={to}
       className={({ isActive }) => clsx(
-        "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white",
+        "flex items-center gap-1 px-2 py-1 text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white rounded-none",
         isActive ? "bg-primary-600 text-white" : "text-slate-300"
       )}
     >
@@ -117,7 +117,7 @@ export default function TopNavigation() {
       ]
     },
     {
-      label: 'Billing', icon: Receipt,
+      label: 'Billing', icon: IndianRupee,
       dropdown: [
         { label: 'Add Tests (Order)', to: '/billing/add' },
         { label: 'Test Bills', to: '/billing/list' },
@@ -129,14 +129,14 @@ export default function TopNavigation() {
   ];
 
   return (
-    <div className="bg-slate-900 shadow-sm sticky top-0 z-40 border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <div className="bg-slate-900 border-b-2 border-slate-700 sticky top-0 z-40 rounded-none">
+      <div className="max-w-full px-2">
+        <div className="flex items-center justify-between h-10">
           <div className="flex items-center flex-shrink-0">
-            <Activity className="h-8 w-8 text-primary-500" />
-            <span className="ml-2 text-xl font-bold text-white tracking-tight">ElabAssist <span className="font-light text-slate-400">Admin</span></span>
+            <Activity className="h-5 w-5 text-primary-500" />
+            <span className="ml-2 text-sm font-bold text-white tracking-tight">ElabAssist</span>
           </div>
-          <div className="hidden md:flex ml-10 space-x-1">
+          <div className="hidden md:flex space-x-1">
             {navigation.map((item, idx) => (
               <NavItem key={idx} {...item} />
             ))}
