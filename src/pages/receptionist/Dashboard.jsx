@@ -9,10 +9,10 @@ const mockStats = {
 };
 
 const mockAppointments = [
-  { id: 'APT-990', time: '10:00 AM', patient: 'John Doe', doctor: 'Dr. Sarah Connor', status: 'Completed' },
-  { id: 'APT-991', time: '10:30 AM', patient: 'Jane Smith', doctor: 'Dr. John Watson', status: 'In Progress' },
-  { id: 'APT-992', time: '11:00 AM', patient: 'Bob Wilson', doctor: 'Dr. Sarah Connor', status: 'Waiting' },
-  { id: 'APT-993', time: '11:30 AM', patient: 'Alice Brown', doctor: 'Dr. John Watson', status: 'Booked' },
+  { id: 'APT-990', time: '10:00 AM', patient: 'John Doe', doctor: 'Dr. James Anderson', status: 'Completed' },
+  { id: 'APT-991', time: '10:30 AM', patient: 'Jane Smith', doctor: 'Dr. Michael Brown', status: 'In Progress' },
+  { id: 'APT-992', time: '11:00 AM', patient: 'Bob Wilson', doctor: 'Dr. James Anderson', status: 'Waiting' },
+  { id: 'APT-993', time: '11:30 AM', patient: 'Alice Brown', doctor: 'Dr. Michael Brown', status: 'Booked' },
 ];
 
 export default function ReceptionistDashboard() {

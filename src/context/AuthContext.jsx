@@ -27,9 +27,9 @@ export function AuthProvider({ children }) {
     const { username, password, role } = credentials;
     
     const mockUsers = {
-      admin: { id: 2, name: 'Admin User', role: 'admin', branch: 'Main Hospital HQ' },
-      receptionist: { id: 6, name: 'Reception Jane', role: 'receptionist', branch: 'Main Hospital HQ' },
-      laboratorist: { id: 5, name: 'Lab Tech Mike', role: 'laboratorist', branch: 'Main Hospital HQ' },
+      admin: { id: 2, name: 'Admin User', role: 'admin', branch: 'Enterprise Elabassist' },
+      receptionist: { id: 6, name: 'Reception Jane', role: 'receptionist', branch: 'Enterprise Elabassist' },
+      laboratorist: { id: 5, name: 'Lab Tech Mike', role: 'laboratorist', branch: 'Enterprise Elabassist' },
     };
 
     if (username && password) {

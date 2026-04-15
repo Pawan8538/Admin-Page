@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const initialCats = [
-  { code: 'PATH-01', name: 'Hematology', head: 'Dr. Sarah Connor' },
-  { code: 'PATH-02', name: 'Biochemistry', head: 'Dr. John Watson' },
+  { code: 'PATH-01', name: 'Hematology', head: 'Dr. James Anderson' },
+  { code: 'PATH-02', name: 'Biochemistry', head: 'Dr. Michael Brown' },
 ];
 
 export default function Categories() {

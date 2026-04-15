@@ -1,7 +1,13 @@
+import { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate, Outlet } from 'react-router-dom';
-import { Activity, FileText, List, CheckCircle, LogOut, LayoutTemplate } from 'lucide-react';
+import { Activity, FileText, List, CheckCircle, LogOut, LayoutTemplate, User } from 'lucide-react';
 import clsx from 'clsx';
 import { useAuth } from '../context/AuthContext';
+
+function getInitials(name) {
+  if (!name) return 'U';
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
 
 const navItems = [
   { label: 'Dashboard', to: '/laboratorist/dashboard', icon: Activity },
@@ -14,11 +20,32 @@ const navItems = [
 export default function LabLayout() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const [showProfile, setShowProfile] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/diagnostic/authentication');
   };
+
+  const handleProfileClick = () => {
+    setShowProfile(!showProfile);
+  };
+
+  const closeProfile = () => {
+    setShowProfile(false);
+  };
+
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setShowProfile(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -45,18 +72,29 @@ export default function LabLayout() {
                 </NavLink>
               ))}
             </div>
-            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-slate-600">
-              <div className="text-right">
-                <div className="text-[10px] font-bold text-primary-400 uppercase">Laboratorist</div>
-                <div className="text-xs text-white">{user?.name}</div>
-              </div>
+            <div className="relative flex items-center gap-2 ml-4 pl-4 border-l border-slate-600" ref={profileRef}>
               <button
-                onClick={handleLogout}
-                className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-slate-300 hover:text-red-400 transition-colors"
-                title="Logout"
+                onClick={handleProfileClick}
+                className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white hover:bg-primary-700 transition-colors"
               >
-                <LogOut className="w-4 h-4" />
+                <User className="w-5 h-5" />
               </button>
+              {showProfile && (
+                <div className="absolute right-0 top-10 w-56 bg-white border-2 border-slate-400 shadow-lg z-50">
+                  <div className="p-3 border-b border-slate-300">
+                    <div className="text-sm font-bold text-slate-800">{user?.name}</div>
+                    <div className="text-xs text-slate-500 capitalize">{user?.role}</div>
+                    <div className="text-xs text-slate-400 mt-1">Branch: {user?.branch}</div>
+                  </div>
+                  <button
+                    onClick={() => { closeProfile(); handleLogout(); }}
+                    className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

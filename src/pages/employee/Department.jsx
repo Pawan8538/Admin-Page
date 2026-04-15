@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const initialDepts = [
-  { id: 'D-01', name: 'Pathology', head: 'Dr. Sarah Connor' },
+  { id: 'D-01', name: 'Pathology', head: 'Dr. James Anderson' },
   { id: 'D-02', name: 'Front Desk', head: 'John Reese' },
 ];
 
