@@ -1,8 +1,17 @@
+import { Download } from 'lucide-react';
+import { useState } from 'react';
+import ExportModal from '../../components/ui/ExportModal';
+
 export default function GenericReferralReport({ title, headers, items }) {
+  const [showExport, setShowExport] = useState(false);
+
   return (
     <div className="space-y-2 pb-10">
       <div className="flex items-center justify-between border-b-2 border-slate-400 pb-1 mb-2">
         <h1 className="text-lg font-bold text-slate-800 uppercase tracking-wide">{title}</h1>
+        <button onClick={() => setShowExport(true)} className="flex items-center gap-1 px-2 py-1 bg-slate-200 border border-slate-500 text-xs font-semibold text-slate-800 hover:bg-slate-300 rounded-none">
+          <Download className="w-3 h-3" /> Export Statement
+        </button>
       </div>
       
       <div className="bg-slate-100 border-2 border-slate-400 p-2 flex gap-2 items-center mb-2">
@@ -32,6 +41,8 @@ export default function GenericReferralReport({ title, headers, items }) {
           </tbody>
         </table>
       </div>
+
+      <ExportModal isOpen={showExport} onClose={() => setShowExport(false)} entityName={title} />
     </div>
   );
 }
