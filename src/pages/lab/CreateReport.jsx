@@ -64,7 +64,7 @@ export default function CreateReport() {
     age: 45,
     gender: 'M',
     test: 'CBC, LFT',
-    doctor: 'Dr. Sarah Connor',
+    doctor: 'Dr. James Anderson',
     date: '15-04-2026',
   };
 

@@ -3,17 +3,17 @@ import { Search, Plus, Calendar, Clock, User } from 'lucide-react';
 import clsx from 'clsx';
 
 const mockAppointments = [
-  { id: 'APT-990', patient: 'John Doe', phone: '9876543210', doctor: 'Dr. Sarah Connor', time: '10:00 AM', date: '15-04-2026', status: 'Completed', type: 'Follow-up' },
-  { id: 'APT-991', patient: 'Jane Smith', phone: '9876543211', doctor: 'Dr. John Watson', time: '10:30 AM', date: '15-04-2026', status: 'In Progress', type: 'New' },
-  { id: 'APT-992', patient: 'Bob Wilson', phone: '9876543212', doctor: 'Dr. Sarah Connor', time: '11:00 AM', date: '15-04-2026', status: 'Waiting', type: 'New' },
-  { id: 'APT-993', patient: 'Alice Brown', phone: '9876543213', doctor: 'Dr. John Watson', time: '11:30 AM', date: '15-04-2026', status: 'Booked', type: 'Follow-up' },
-  { id: 'APT-994', patient: 'Robert King', phone: '9876543214', doctor: 'Dr. Sarah Connor', time: '12:00 PM', date: '15-04-2026', status: 'Booked', type: 'New' },
-  { id: 'APT-995', patient: 'Mary Johnson', phone: '9876543215', doctor: 'Dr. John Watson', time: '12:30 PM', date: '15-04-2026', status: 'Booked', type: 'Follow-up' },
-  { id: 'APT-996', patient: 'David Lee', phone: '9876543216', doctor: 'Dr. Sarah Connor', time: '02:00 PM', date: '15-04-2026', status: 'Booked', type: 'New' },
-  { id: 'APT-997', patient: 'Emma Wilson', phone: '9876543217', doctor: 'Dr. John Watson', time: '02:30 PM', date: '15-04-2026', status: 'Cancelled', type: 'New' },
+  { id: 'APT-990', patient: 'John Doe', phone: '9876543210', doctor: 'Dr. James Anderson', time: '10:00 AM', date: '15-04-2026', status: 'Completed', type: 'Follow-up' },
+  { id: 'APT-991', patient: 'Jane Smith', phone: '9876543211', doctor: 'Dr. Michael Brown', time: '10:30 AM', date: '15-04-2026', status: 'In Progress', type: 'New' },
+  { id: 'APT-992', patient: 'Bob Wilson', phone: '9876543212', doctor: 'Dr. James Anderson', time: '11:00 AM', date: '15-04-2026', status: 'Waiting', type: 'New' },
+  { id: 'APT-993', patient: 'Alice Brown', phone: '9876543213', doctor: 'Dr. Michael Brown', time: '11:30 AM', date: '15-04-2026', status: 'Booked', type: 'Follow-up' },
+  { id: 'APT-994', patient: 'Robert King', phone: '9876543214', doctor: 'Dr. James Anderson', time: '12:00 PM', date: '15-04-2026', status: 'Booked', type: 'New' },
+  { id: 'APT-995', patient: 'Mary Johnson', phone: '9876543215', doctor: 'Dr. Michael Brown', time: '12:30 PM', date: '15-04-2026', status: 'Booked', type: 'Follow-up' },
+  { id: 'APT-996', patient: 'David Lee', phone: '9876543216', doctor: 'Dr. James Anderson', time: '02:00 PM', date: '15-04-2026', status: 'Booked', type: 'New' },
+  { id: 'APT-997', patient: 'Emma Wilson', phone: '9876543217', doctor: 'Dr. Michael Brown', time: '02:30 PM', date: '15-04-2026', status: 'Cancelled', type: 'New' },
 ];
 
-const doctors = ['All', 'Dr. Sarah Connor', 'Dr. John Watson'];
+const doctors = ['All', 'Dr. James Anderson', 'Dr. Michael Brown'];
 const statuses = ['all', 'booked', 'waiting', 'inprogress', 'completed', 'cancelled'];
 
 export default function ReceptionistAppointments() {

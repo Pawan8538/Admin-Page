@@ -4,12 +4,12 @@ import { Search, Filter, AlertTriangle, Clock } from 'lucide-react';
 import clsx from 'clsx';
 
 const mockRequests = [
-  { id: 'REQ-8001', patient: 'John Doe', age: 45, gender: 'M', test: 'CBC, LFT', doctor: 'Dr. Sarah Connor', priority: 'URGENT', time: '10:30 AM', date: '15-04-2026', status: 'Pending' },
-  { id: 'REQ-8002', patient: 'Jane Smith', age: 32, gender: 'F', test: 'Thyroid Panel', doctor: 'Dr. John Watson', priority: 'Routine', time: '11:00 AM', date: '15-04-2026', status: 'Pending' },
-  { id: 'REQ-8003', patient: 'Bob Wilson', age: 58, gender: 'M', test: 'KFT, Lipid Profile', doctor: 'Dr. Sarah Connor', priority: 'Routine', time: '11:15 AM', date: '15-04-2026', status: 'Processing' },
-  { id: 'REQ-8004', patient: 'Alice Brown', age: 28, gender: 'F', test: 'HbA1c', doctor: 'Dr. John Watson', priority: 'URGENT', time: '11:30 AM', date: '15-04-2026', status: 'Pending' },
-  { id: 'REQ-8005', patient: 'Robert King', age: 62, gender: 'M', test: 'Liver Function Test', doctor: 'Dr. Sarah Connor', priority: 'Routine', time: '09:00 AM', date: '15-04-2026', status: 'Completed' },
-  { id: 'REQ-8006', patient: 'Mary Johnson', age: 55, gender: 'F', test: 'CBC, ESR', doctor: 'Dr. John Watson', priority: 'Routine', time: '09:15 AM', date: '15-04-2026', status: 'Completed' },
+  { id: 'REQ-8001', patient: 'John Doe', age: 45, gender: 'M', test: 'CBC, LFT', doctor: 'Dr. James Anderson', priority: 'URGENT', time: '10:30 AM', date: '15-04-2026', status: 'Pending' },
+  { id: 'REQ-8002', patient: 'Jane Smith', age: 32, gender: 'F', test: 'Thyroid Panel', doctor: 'Dr. Michael Brown', priority: 'Routine', time: '11:00 AM', date: '15-04-2026', status: 'Pending' },
+  { id: 'REQ-8003', patient: 'Bob Wilson', age: 58, gender: 'M', test: 'KFT, Lipid Profile', doctor: 'Dr. James Anderson', priority: 'Routine', time: '11:15 AM', date: '15-04-2026', status: 'Processing' },
+  { id: 'REQ-8004', patient: 'Alice Brown', age: 28, gender: 'F', test: 'HbA1c', doctor: 'Dr. Michael Brown', priority: 'URGENT', time: '11:30 AM', date: '15-04-2026', status: 'Pending' },
+  { id: 'REQ-8005', patient: 'Robert King', age: 62, gender: 'M', test: 'Liver Function Test', doctor: 'Dr. James Anderson', priority: 'Routine', time: '09:00 AM', date: '15-04-2026', status: 'Completed' },
+  { id: 'REQ-8006', patient: 'Mary Johnson', age: 55, gender: 'F', test: 'CBC, ESR', doctor: 'Dr. Michael Brown', priority: 'Routine', time: '09:15 AM', date: '15-04-2026', status: 'Completed' },
 ];
 
 export default function LabRequests() {

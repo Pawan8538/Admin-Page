@@ -6,8 +6,8 @@ import ImportModal from '../../components/ui/ImportModal';
 import AddEmployeeModal from '../../components/ui/AddEmployeeModal';
 
 const initialDummyEmployees = [
-  { id: 'EMP-101', name: 'Dr. Sarah Connor', department: 'Pathology', role: 'Head Pathologist', status: 'Active' },
-  { id: 'EMP-102', name: 'John Watson', department: 'Pathology', role: 'Lab Technician', status: 'Active' },
+  { id: 'EMP-101', name: 'Dr. James Anderson', department: 'Pathology', role: 'Head Pathologist', status: 'Active' },
+  { id: 'EMP-102', name: 'John Wilson', department: 'Pathology', role: 'Lab Technician', status: 'Active' },
   { id: 'EMP-103', name: 'Alice Smith', department: 'Billing', role: 'Billing Officer', status: 'On Leave' },
 ];
 

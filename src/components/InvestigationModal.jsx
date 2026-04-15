@@ -52,7 +52,7 @@ export default function InvestigationModal({ onClose }) {
             Center : <span className="text-primary-800">Enterprise Elabassist</span>
           </div>
           <div>
-            Ref Dr. : <span className="text-primary-800">Dr. John Doe</span>
+Ref Dr. : <span className="text-primary-800">Dr. David Wilson</span>
           </div>
           <div>
             Regn Date : <span>23-03-2023 15:14:00</span>
