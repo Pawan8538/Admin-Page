@@ -18,10 +18,10 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="max-w-full space-y-2 flex flex-col min-h-screen pb-10 relative">
+    <div className="max-w-full space-y-4">
       
       {/* Header Area */}
-      <div className="flex justify-between items-center border-b-2 border-slate-400 pb-1 mb-2 bg-slate-200 p-2 border-2 rounded-none">
+      <div className="flex justify-between items-center border-b-2 border-slate-400 pb-1 bg-slate-200 p-3 border-2">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-bold text-slate-800 tracking-wide uppercase">System Dashboard</h1>
           <span className="text-xs font-semibold text-slate-600 bg-white border border-slate-400 px-2 py-0.5">
@@ -152,18 +152,6 @@ export default function Dashboard() {
                ))}
              </tbody>
           </table>
-        </div>
-      </div>
-
-      {/* Footer Status Bar */}
-      <div className="fixed bottom-0 left-0 w-full bg-slate-200 border-t-2 border-slate-400 p-1 flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-600 px-4">
-        <div className="flex gap-4">
-          <span className="border-r border-slate-400 pr-4">User: Admin (Superuser)</span>
-          <span className="border-r border-slate-400 pr-4">Branch: Main Hospital HQ</span>
-          <span className="text-primary-700">Database Active (32ms)</span>
-        </div>
-        <div>
-          ElabAssist v4.2.0 | Build 8912
         </div>
       </div>
 

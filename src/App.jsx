@@ -1,46 +1,43 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
+import AuthLayout from './components/AuthLayout';
+import Login from './pages/auth/Login';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
-// Patient
-import CreatePatient from './pages/patient/CreatePatient';
-import PatientList from './pages/patient/PatientList';
-import PatientCategory from './pages/patient/PatientCategory';
+import DoctorLayout from './pages/doctor/DoctorLayout';
+import DoctorDashboard from './pages/doctor/DoctorDashboard';
+import AppointmentList from './pages/doctor/AppointmentList';
+import PatientProfile from './pages/doctor/PatientProfile';
+import PrescriptionForm from './pages/doctor/PrescriptionForm';
+import LabRequest from './pages/doctor/LabRequest';
 
-// Tests
-import TestList from './pages/tests/TestList';
-import CreateTest from './pages/tests/CreateTest';
-import AddTests from './pages/tests/AddTests';
+const ProtectedRoute = ({ children, allowedRole }) => {
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
 
-// Additional Modules
-import EmployeeList from './pages/employee/EmployeeList';
-import AddEmployee from './pages/employee/AddEmployee';
-import Department from './pages/employee/Department';
-import Designation from './pages/employee/Designation';
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
 
-import LabTestConfig from './pages/pathology/LabTestConfig';
-import Categories from './pages/pathology/Categories';
-import Reports from './pages/pathology/Reports';
+  if (allowedRole && role !== allowedRole) {
+    return <Navigate to={role === 'ADMIN' ? '/admin' : '/doctor/dashboard'} replace />;
+  }
 
-import TestBillList from './pages/billing/TestBillList';
-import AddBillOrder from './pages/billing/AddBillOrder';
-import DueReport from './pages/billing/DueReport';
-import PaidReport from './pages/billing/PaidReport';
-import DueCollectReport from './pages/billing/DueCollectReport';
+  return children;
+};
 
-// Referral Manager
-import SetReferral from './pages/referral/SetReferral';
-import ReferralList from './pages/referral/ReferralList';
-import WithdrawalsRewards from './pages/referral/WithdrawalsRewards';
-import Statement from './pages/referral/Statement';
-import CommissionReport from './pages/referral/CommissionReport';
-import ReferralSummary from './pages/referral/ReferralSummary';
-import PayoutReport from './pages/referral/PayoutReport';
+const AuthRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
 
-// Settings
-import WhatsAppConfig from './pages/settings/WhatsAppConfig';
-import SMTPConfig from './pages/settings/SMTPConfig';
-// Placeholder mapping component
+  if (token) {
+    return <Navigate to={role === 'ADMIN' ? '/admin' : '/doctor/dashboard'} replace />;
+  }
+
+  return children;
+};
+
 const Placeholder = ({ title }) => (
   <div className="flex justify-center p-10 bg-white">
     <h2 className="text-xl font-semibold text-slate-700">{title} - Under Construction</h2>
@@ -49,76 +46,113 @@ const Placeholder = ({ title }) => (
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          
-          {/* Patient Routes */}
-          <Route path="patient">
-            <Route path="create" element={<CreatePatient />} />
-            <Route path="list" element={<PatientList />} />
-            <Route path="category" element={<PatientCategory />} />
-          </Route>
+    <Routes>
+      <Route element={<AuthLayout />}>
+        <Route
+          index
+          element={<Navigate to="/login" replace />}
+        />
+        <Route
+          path="/login"
+          element={
+            <AuthRoute>
+              <Login />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <AuthRoute>
+              <ForgotPassword />
+            </AuthRoute>
+          }
+        />
+      </Route>
 
-          {/* Tests */}
-          <Route path="tests">
-            <Route path="create" element={<CreateTest />} />
-            <Route path="list" element={<TestList />} />
-            <Route path="add" element={<AddTests />} />
-          </Route>
+      <Route
+        path="/admin/*"
+        element={
+          <ProtectedRoute allowedRole="ADMIN">
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
 
-          {/* Employee */}
-          <Route path="employee">
-            <Route path="create" element={<AddEmployee />} />
-            <Route path="list" element={<EmployeeList />} />
-            <Route path="department" element={<Department />} />
-            <Route path="designation" element={<Designation />} />
-          </Route>
-
-          {/* Pathology */}
-          <Route path="pathology">
-            <Route path="tests" element={<LabTestConfig />} />
-            <Route path="categories" element={<Categories />} />
-            <Route path="reports" element={<Reports />} />
-          </Route>
-
-          {/* Referral */}
-          <Route path="referral">
-            <Route path="set" element={<SetReferral />} />
-            <Route path="list" element={<ReferralList />} />
-            <Route path="rewards" element={<WithdrawalsRewards />} />
-            <Route path="statement" element={<Statement />} />
-            <Route path="commission" element={<CommissionReport />} />
-            <Route path="summary" element={<ReferralSummary />} />
-            <Route path="payout" element={<PayoutReport />} />
-          </Route>
-
-          {/* Billing */}
-          <Route path="billing">
-            <Route path="add" element={<AddBillOrder />} />
-            <Route path="list" element={<TestBillList />} />
-            <Route path="reports/due" element={<DueReport />} />
-            <Route path="reports/paid" element={<PaidReport />} />
-            <Route path="reports/collect" element={<DueCollectReport />} />
-          </Route>
-
-          {/* Settings */}
-          <Route path="settings">
-            <Route path="whatsapp" element={<WhatsAppConfig />} />
-            <Route path="smtp" element={<SMTPConfig />} />
-            <Route path="formatting" element={<Placeholder title="Invoice & Report Formatting" />} />
-            <Route path="taxes" element={<Placeholder title="Tax & Default Discount Rules" />} />
-            <Route path="prefixes" element={<Placeholder title="ID Generation & Prefixes" />} />
-            <Route path="audit" element={<Placeholder title="System Audit Logs" />} />
-            <Route path="backup" element={<Placeholder title="Database Backup & Restore" />} />
-            <Route path="updates" element={<Placeholder title="Software Updates & Licensing" />} />
-          </Route>
-
+        <Route path="patient">
+          <Route path="create" element={<Placeholder title="Create Patient" />} />
+          <Route path="list" element={<Placeholder title="Patient List" />} />
+          <Route path="category" element={<Placeholder title="Patient Category" />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+
+        <Route path="tests">
+          <Route path="create" element={<Placeholder title="Create Test" />} />
+          <Route path="list" element={<Placeholder title="Test List" />} />
+          <Route path="add" element={<Placeholder title="Add Tests" />} />
+        </Route>
+
+        <Route path="employee">
+          <Route path="create" element={<Placeholder title="Add Employee" />} />
+          <Route path="list" element={<Placeholder title="Employee List" />} />
+          <Route path="department" element={<Placeholder title="Department" />} />
+          <Route path="designation" element={<Placeholder title="Designation" />} />
+        </Route>
+
+        <Route path="pathology">
+          <Route path="tests" element={<Placeholder title="Lab Tests Config" />} />
+          <Route path="categories" element={<Placeholder title="Categories" />} />
+          <Route path="reports" element={<Placeholder title="Reports" />} />
+        </Route>
+
+        <Route path="referral">
+          <Route path="set" element={<Placeholder title="Set Referral" />} />
+          <Route path="list" element={<Placeholder title="Referral List" />} />
+          <Route path="rewards" element={<Placeholder title="Withdrawals & Rewards" />} />
+          <Route path="statement" element={<Placeholder title="Statement" />} />
+          <Route path="commission" element={<Placeholder title="Commission Report" />} />
+          <Route path="summary" element={<Placeholder title="Summary" />} />
+          <Route path="payout" element={<Placeholder title="Payout Report" />} />
+        </Route>
+
+        <Route path="billing">
+          <Route path="add" element={<Placeholder title="Add Tests (Order)" />} />
+          <Route path="list" element={<Placeholder title="Test Bills" />} />
+          <Route path="reports/due" element={<Placeholder title="Due Bill Report" />} />
+          <Route path="reports/paid" element={<Placeholder title="Paid Bill Report" />} />
+          <Route path="reports/collect" element={<Placeholder title="Due Collect Report" />} />
+        </Route>
+
+        <Route path="settings">
+          <Route path="whatsapp" element={<Placeholder title="WhatsApp API" />} />
+          <Route path="smtp" element={<Placeholder title="SMTP Email Config" />} />
+          <Route path="formatting" element={<Placeholder title="Invoice & Report Formatting" />} />
+          <Route path="taxes" element={<Placeholder title="Tax & Default Discount Rules" />} />
+          <Route path="prefixes" element={<Placeholder title="ID Generation & Prefixes" />} />
+          <Route path="audit" element={<Placeholder title="System Audit Logs" />} />
+          <Route path="backup" element={<Placeholder title="Database Backup & Restore" />} />
+          <Route path="updates" element={<Placeholder title="Software Updates & Licensing" />} />
+        </Route>
+      </Route>
+
+      <Route
+        path="/doctor/*"
+        element={
+          <ProtectedRoute allowedRole="DOCTOR">
+            <DoctorLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="dashboard" element={<DoctorDashboard />} />
+        <Route path="appointments" element={<AppointmentList />} />
+        <Route path="patient/:id" element={<PatientProfile />} />
+        <Route path="prescription/:patientId" element={<PrescriptionForm />} />
+        <Route path="lab-request/:patientId" element={<LabRequest />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
