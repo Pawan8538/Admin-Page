@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, Users, TestTube, UserCircle, 
-  Microscope, HeartHandshake, IndianRupee, ChevronDown, Activity, Settings
+  Microscope, HeartHandshake, IndianRupee, ChevronDown, Activity, Settings, LogOut
 } from 'lucide-react';
 import clsx from 'clsx';
+import { useAuth } from '../context/AuthContext';
 
 const NavItem = ({ to, icon: Icon, label, dropdown }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,6 +68,14 @@ const NavItem = ({ to, icon: Icon, label, dropdown }) => {
 };
 
 export default function TopNavigation() {
+  const navigate = useNavigate();
+  const { user, logout, isAuthenticated } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/diagnostic/authentication');
+  };
+
   const navigation = [
     { label: 'Dashboard', to: '/', icon: LayoutDashboard },
     { 
@@ -147,10 +156,25 @@ export default function TopNavigation() {
             <Activity className="h-5 w-5 text-primary-500" />
             <span className="ml-2 text-sm font-bold text-white tracking-tight">ElabAssist</span>
           </div>
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
             {navigation.map((item, idx) => (
               <NavItem key={idx} {...item} />
             ))}
+            {isAuthenticated() && (
+              <div className="flex items-center gap-2 ml-4 pl-4 border-l border-slate-600">
+                <div className="text-right">
+                  <div className="text-[10px] font-bold text-primary-400 uppercase">{user?.role}</div>
+                  <div className="text-xs text-white">{user?.name}</div>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-slate-300 hover:text-red-400 transition-colors"
+                  title="Logout"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
